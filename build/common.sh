@@ -163,7 +163,7 @@ function kube::build::prepare_docker_machine() {
   kube::log::status "docker-machine was found."
   docker-machine inspect kube-dev >/dev/null || {
     kube::log::status "Creating a machine to build Kubernetes"
-    docker-machine create -d virtualbox kube-dev > /dev/null || {
+    docker-machine create -d virtualbox --memory "2048" kube-dev > /dev/null || {
       kube::log::error "Something went wrong creating a machine."
       kube::log::error "Try the following: "
       kube::log::error "docker-machine create -d <provider> kube-dev"
